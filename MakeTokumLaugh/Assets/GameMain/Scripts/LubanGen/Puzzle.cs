@@ -19,7 +19,7 @@ public sealed partial class Puzzle : Luban.BeanBase
     {
         { if(!_buf["id"].IsNumber) { throw new SerializationException(); }  Id = _buf["id"]; }
         { if(!_buf["puzzle_name"].IsString) { throw new SerializationException(); }  PuzzleName = _buf["puzzle_name"]; }
-        { if(!_buf["IsStart"].IsBoolean) { throw new SerializationException(); }  IsStart = _buf["IsStart"]; }
+        { if(!_buf["is_start"].IsBoolean) { throw new SerializationException(); }  IsStart = _buf["is_start"]; }
         { if(!_buf["next_id"].IsNumber) { throw new SerializationException(); }  NextId = _buf["next_id"]; }
         { var __json0 = _buf["init_item_list"]; if(!__json0.IsArray) { throw new SerializationException(); } int _n0 = __json0.Count; InitItemList = new string[_n0]; int __index0=0; foreach(JSONNode __e0 in __json0.Children) { string __v0;  { if(!__e0.IsString) { throw new SerializationException(); }  __v0 = __e0; }  InitItemList[__index0++] = __v0; }   }
         { if(!_buf["suc_item"].IsString) { throw new SerializationException(); }  SucItem = _buf["suc_item"]; }
@@ -73,7 +73,7 @@ public sealed partial class Puzzle : Luban.BeanBase
         return "{ "
         + "id:" + Id + ","
         + "puzzleName:" + PuzzleName + ","
-        + "IsStart:" + IsStart + ","
+        + "isStart:" + IsStart + ","
         + "nextId:" + NextId + ","
         + "initItemList:" + Luban.StringUtil.CollectionToString(InitItemList) + ","
         + "sucItem:" + SucItem + ","

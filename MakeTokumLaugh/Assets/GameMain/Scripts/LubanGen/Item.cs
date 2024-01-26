@@ -23,6 +23,7 @@ public sealed partial class Item : Luban.BeanBase
         { if(!_buf["prefab"].IsString) { throw new SerializationException(); }  Prefab = _buf["prefab"]; }
         { if(!_buf["result"].IsString) { throw new SerializationException(); }  Result = _buf["result"]; }
         { if(!_buf["is_reserved"].IsBoolean) { throw new SerializationException(); }  IsReserved = _buf["is_reserved"]; }
+        { if(!_buf["lock_id"].IsString) { throw new SerializationException(); }  LockId = _buf["lock_id"]; }
     }
 
     public static Item DeserializeItem(JSONNode _buf)
@@ -43,7 +44,7 @@ public sealed partial class Item : Luban.BeanBase
     /// </summary>
     public readonly string Desc;
     /// <summary>
-    /// 预制体
+    /// 预制体(不用写后缀
     /// </summary>
     public readonly string Prefab;
     /// <summary>
@@ -54,12 +55,17 @@ public sealed partial class Item : Luban.BeanBase
     /// 道具夸关是否保留
     /// </summary>
     public readonly bool IsReserved;
+    /// <summary>
+    /// 解锁道具id
+    /// </summary>
+    public readonly string LockId;
    
     public const int __ID__ = 2289459;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(Tables tables)
     {
+        
         
         
         
@@ -77,6 +83,7 @@ public sealed partial class Item : Luban.BeanBase
         + "prefab:" + Prefab + ","
         + "result:" + Result + ","
         + "isReserved:" + IsReserved + ","
+        + "lockId:" + LockId + ","
         + "}";
     }
 }

@@ -1,8 +1,8 @@
 [
   {
     "id": 1,
-    "puzzle_name": "谜题1",
-    "IsStart": true,
+    "puzzle_name": "____，启——动——！",
+    "is_start": true,
     "next_id": 0,
     "init_item_list": [
       "item1",
@@ -10,6 +10,6 @@
       "item3",
       "item4"
     ],
-    "suc_item": ""
+    "suc_item": "item3"
   }
 ]

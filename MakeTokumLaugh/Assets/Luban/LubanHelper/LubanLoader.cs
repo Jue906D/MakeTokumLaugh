@@ -9,7 +9,7 @@ using UnityEngine;
 
 public static class LubanLoader
 {
-    public static string DataPath = "";
+    public static string DataPath = Application.dataPath+"/GameMain/Data/ConfigData";
     public static cfg.Tables Tables = null;
 
 
