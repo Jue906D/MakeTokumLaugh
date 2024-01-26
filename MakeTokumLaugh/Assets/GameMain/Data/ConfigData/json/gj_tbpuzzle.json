@@ -1,0 +1,15 @@
+[
+  {
+    "id": 1,
+    "puzzle_name": "谜题1",
+    "IsStart": true,
+    "next_id": 0,
+    "init_item_list": [
+      "item1",
+      "item2",
+      "item3",
+      "item4"
+    ],
+    "suc_item": ""
+  }
+]

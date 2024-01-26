@@ -1,0 +1,10 @@
+[
+  {
+    "id": 1,
+    "icon": "item1.png",
+    "desc": "desc",
+    "prefab": "item1.prefab",
+    "result": "GameOver",
+    "is_reserved": false
+  }
+]
