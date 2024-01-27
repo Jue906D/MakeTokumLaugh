@@ -11,10 +11,13 @@ public class GameMain : MonoBehaviour
     [SerializeField] public GameObject UITop;
     [SerializeField] public GameObject UIBottom;
     [SerializeField] public GameObject Internal;
+    [SerializeField] public GameObject GO;
     // Start is called before the first frame update
     [SerializeField] public List<Item> ItemList;
     [SerializeField] public List<Pivot> PivotList;
     [SerializeField] public List<GameObject> LevelNode;
+    [SerializeField] public List<GameObject> Levels;
+    public Dictionary<string, GameObject> ItemDict; 
 
     [SerializeField] public TextMeshProUGUI title;
     [SerializeField] public TextMeshProUGUI desc;
@@ -27,6 +30,7 @@ public class GameMain : MonoBehaviour
         ItemList = new List<Item>(6);
         //PivotList = new List<Pivot>(6);
         Main = this;
+        ItemDict = new Dictionary<string, GameObject>();
     }
 
     void OnEnable()
@@ -60,9 +64,17 @@ public class GameMain : MonoBehaviour
                 Debug.Log(string.Format("Destroy item {0}", pivot.CurItem.Name));
                 Destroy(pivot.CurItem.gameObject);
                 pivot.IsUsing = false;
+                ItemDict.Remove(pivot.CurItem.Id);
+                Debug.Log(string.Format("Delete Item {0}", name));
             }
 
         }
+        ItemDict.Clear();
+        CurLevel = 0;
+        Levels[2].SetActive(false);
+        Levels[3].SetActive(false);
+        Levels[4].SetActive(false);
+        CurPuzzle = 0;
     }
 
     // Update is called once per frame
@@ -77,8 +89,14 @@ public class GameMain : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
-    void GetItem(string id,string name)
+    public void GetItem(string id,string name)
     {
+        if (ItemDict.ContainsKey(id))
+        {
+            Debug.Log(string.Format("已存在，未生成 {0}", id));
+            return;
+        }
+
         GameObject prefab = Resources.Load<GameObject>(string.Format("Item/{0}",name));
         if (prefab)
         {
@@ -95,6 +113,8 @@ public class GameMain : MonoBehaviour
                 }
                 obj.transform.SetParent(GameMainObject.transform, false);
                 ItemList.Add(tmpItem);
+                ItemDict.Add(id,obj);
+                Debug.Log(string.Format("Add Item {0}",name));
 
             }
         }
@@ -119,7 +139,7 @@ public class GameMain : MonoBehaviour
         return null;
     }
 
-    public IEnumerator NextLevel()
+    public void NextLevel()
     {
         if (CurLevel == 4)
         {
@@ -129,7 +149,7 @@ public class GameMain : MonoBehaviour
             //重置过关不保留物品
             foreach (var pivot in PivotList)
             {
-                if (pivot.IsUsing && !pivot.CurItem.IsReserved)
+                if (pivot.IsUsing )
                 {
                     Debug.Log(string.Format("Destroy item {0}", pivot.CurItem.Name));
                     Destroy(pivot.CurItem.gameObject);
@@ -137,20 +157,79 @@ public class GameMain : MonoBehaviour
                 }
 
             }
-
+            ItemDict.Clear();
             CurLevel = 1;
+            Levels[2].SetActive(false);
+            Levels[3].SetActive(false);
+            Levels[4].SetActive(false);
             CurPuzzle ++;
+
+            Levels[CurLevel].SetActive(true);
+            //加载标题描述
+            title.text = LubanLoader.Tables.TbPuzzle[CurLevel].PuzzleName;
+            desc.text = LubanLoader.Tables.TbPuzzle[CurLevel].PuzzleName;
+
+            //生成道具
+            string[] itemTemp = LubanLoader.Tables.TbPuzzle[CurLevel].InitItemList;
+            foreach (var id in itemTemp)
+            {
+                if (LubanLoader.Tables.TbItem.DataMap.ContainsKey(id))
+                {
+                    GetItem(id, LubanLoader.Tables.TbItem[id].Prefab);
+                }
+                else
+                {
+                    Debug.Log(string.Format("找不到预制体 {0}", id));
+                }
+
+            }
         }
         else
         {
+            foreach (var pivot in PivotList)
+            {
+                if (pivot.IsUsing && !pivot.CurItem.IsReserved)
+                {
+                    Debug.Log(string.Format("Destroy item {0}", pivot.CurItem.Name));
+                    Destroy(pivot.CurItem.gameObject);
+                    pivot.IsUsing = false;
+                    ItemDict.Remove(pivot.CurItem.Id);
+                    Debug.Log(string.Format("Delete Item {0}", pivot.CurItem.Id));
+                }
 
-            yield return null;
+            }
+            //yield return null;
             CurLevel++;
+            Levels[CurLevel%4 == 0? 4: CurLevel % 4].SetActive(true);
+            //加载标题描述
+            title.text = LubanLoader.Tables.TbPuzzle[CurLevel].PuzzleName;
+            desc.text = LubanLoader.Tables.TbPuzzle[CurLevel].PuzzleName;
+
+            //生成道具
+            string[] itemTemp = LubanLoader.Tables.TbPuzzle[CurLevel].InitItemList;
+            foreach (var id in itemTemp)
+            {
+                if (LubanLoader.Tables.TbItem.DataMap.ContainsKey(id))
+                {
+                    GetItem(id, LubanLoader.Tables.TbItem[id].Prefab);
+                }
+                else
+                {
+                    Debug.Log(string.Format("找不到预制体 {0}", id));
+                }
+                
+            }
         }
     }
 
-    public IEnumerator ShowFeedback(string name)
+    public IEnumerator ShowFeedback(string name,string id)
     {
+        var lockid = LubanLoader.Tables.TbItem[id].LockId;
+        if (!string.IsNullOrEmpty(lockid) && !string.IsNullOrWhiteSpace(lockid))
+        {
+            GetItem(lockid, LubanLoader.Tables.TbItem[lockid].Prefab);
+        }
+
         GameObject prefab = Resources.Load<GameObject>(string.Format("Feedback/{0}", name));
         if (prefab)
         {
@@ -175,6 +254,12 @@ public class GameMain : MonoBehaviour
     public void ShowInternal()
     {
         Internal.SetActive(true);
+
+    }
+
+    public void ShowGameOver()
+    {
+        GO.SetActive(true);
 
     }
 }

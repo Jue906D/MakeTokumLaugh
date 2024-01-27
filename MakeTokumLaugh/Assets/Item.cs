@@ -15,6 +15,8 @@ public class Item : MonoBehaviour
     [SerializeField]
     //
     public string Name;
+    [SerializeField]
+    public string Id;
 
 
     [SerializeField]
@@ -25,10 +27,14 @@ public class Item : MonoBehaviour
 
     [SerializeField]
     public bool isDragging = false;
+    [SerializeField]
+    public bool isDetect = false;
 
     void OnEnable()
     {
         isDragging = false;
+        isDetect = false;
+
     }
 
     // Start is called before the first frame update
@@ -48,6 +54,7 @@ public class Item : MonoBehaviour
         ItemPivot = pivot;
         Name = name;
         IsReserved = LubanLoader.Tables.TbItem[id].IsReserved;
+        Id = id;
     }
 
     private void OnMouseDown()
@@ -90,8 +97,34 @@ public class Item : MonoBehaviour
     {
         if (isDragging == true)
         {
-            isDragging = false;
-            transform.position = ItemPivot.transform.position;
+            if (!isDetect)
+            {
+                isDragging = false;
+                transform.position = ItemPivot.transform.position;
+            }
+            else
+            {
+                string name = Name;
+                var sucname = LubanLoader.Tables.TbPuzzle[GameMain.Main.CurLevel].SucItem;
+                Debug.Log(string.Format("CurSucItem is {0}", LubanLoader.Tables.TbItem[sucname].Prefab));
+                if (Name == LubanLoader.Tables.TbItem[sucname].Prefab)
+                {
+                    EndDrag(true);
+                    GameMain.Main.NextLevel();
+                    var lockid = LubanLoader.Tables.TbItem[Id].LockId;
+                    if (!string.IsNullOrEmpty(lockid) && !string.IsNullOrWhiteSpace(lockid))
+                    {
+                        GameMain.Main.GetItem(lockid, LubanLoader.Tables.TbItem[lockid].Prefab);
+                    }
+                    Debug.Log(string.Format("CurSucItem is {0} Next Level£¡Id is : {1}", name, LubanLoader.Tables.TbItem[sucname].Prefab));
+                }
+                else
+                {
+                    EndDrag(false);
+                    Debug.Log(string.Format("Wrong Answer£¡Id is : {0}", name));
+                }
+            }
+
             //Board.instance.CurDragPiece = null;
         }
         //Debug.Log("end drag");
@@ -104,14 +137,20 @@ public class Item : MonoBehaviour
         isDragging = false;
         if (isDeleted)
         {
-            StartCoroutine(GameMain.Main.ShowFeedback(this.Name));
+            StartCoroutine(GameMain.Main.ShowFeedback(this.Name,Id));
             ItemPivot.GetComponent<Pivot>().IsUsing = false;
             ItemPivot.GetComponent<Pivot>().CurItem = null;
             Destroy(this.gameObject);
         }
         else
         {
-            StartCoroutine(GameMain.Main.ShowFeedback(this.Name));
+            StartCoroutine(GameMain.Main.ShowFeedback(this.Name,Id));
+            if (LubanLoader.Tables.TbItem[Id].Result == "G")
+            {
+                GameMain.Main.ShowGameOver();
+                GameMain.Main.gameObject.SetActive(false);
+                GameMain.Main.gameObject.SetActive(true);
+            }
             transform.position = ItemPivot.transform.position;
         }
         //Board.instance.CurDragPiece = null;

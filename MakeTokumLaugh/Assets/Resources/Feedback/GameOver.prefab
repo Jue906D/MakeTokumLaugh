@@ -317,7 +317,7 @@ GameObject:
   - component: {fileID: 3727195589696901045}
   - component: {fileID: 6832341503849305114}
   m_Layer: 0
-  m_Name: Victory
+  m_Name: GameOver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -452,7 +452,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Victory!!
+  m_text: GameOver!!!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0ebb1fa8acd96de498e042b708c903c0, type: 2}
   m_sharedMaterial: {fileID: 3104455218158464281, guid: 0ebb1fa8acd96de498e042b708c903c0, type: 2}

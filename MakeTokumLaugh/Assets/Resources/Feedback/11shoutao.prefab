@@ -35,8 +35,8 @@ RectTransform:
   m_Father: {fileID: 1960172246886549094}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.29123935, y: 0}
+  m_AnchorMax: {x: 0.71019495, y: 0.13154432}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -122,10 +122,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1245703451041181844}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 6832341503849305114}
+        m_TargetAssemblyTypeName: Feedback, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -317,7 +317,7 @@ GameObject:
   - component: {fileID: 3727195589696901045}
   - component: {fileID: 6832341503849305114}
   m_Layer: 0
-  m_Name: Victory
+  m_Name: 11shoutao
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -452,7 +452,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Victory!!
+  m_text: Shoutao
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0ebb1fa8acd96de498e042b708c903c0, type: 2}
   m_sharedMaterial: {fileID: 3104455218158464281, guid: 0ebb1fa8acd96de498e042b708c903c0, type: 2}
