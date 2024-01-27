@@ -2,14 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pivot : MonoBehaviour
+public class Feedback : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField]
-    public bool IsUsing = false;
-    [SerializeField]
-    public Item CurItem = null;
-
     void Start()
     {
         
@@ -19,5 +14,10 @@ public class Pivot : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void Close()
+    {
+        Destroy(this.gameObject);
     }
 }

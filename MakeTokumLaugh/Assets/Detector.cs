@@ -20,8 +20,18 @@ public class Detector : MonoBehaviour
     {
         var initem = collision.gameObject.GetComponent<Item>();
         string name = initem.Name;
-        initem.EndDrag(true);
-        Debug.Log(string.Format("Trigger£¡Id is : {0}", name));
+        var sucname = LubanLoader.Tables.TbPuzzle[GameMain.Main.CurLevel].SucItem;
+        if (initem.Name == LubanLoader.Tables.TbItem[sucname].Prefab)
+        {
+            initem.EndDrag(true);
+            Debug.Log(string.Format("Next Level£¡Id is : {0}", name));
+        }
+        else
+        {
+            initem.EndDrag(false);
+            Debug.Log(string.Format("Wrong Answer£¡Id is : {0}", name));
+        }
+
     }
 
 

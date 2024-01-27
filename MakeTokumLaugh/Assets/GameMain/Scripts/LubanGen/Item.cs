@@ -17,7 +17,7 @@ public sealed partial class Item : Luban.BeanBase
 {
     public Item(JSONNode _buf) 
     {
-        { if(!_buf["id"].IsNumber) { throw new SerializationException(); }  Id = _buf["id"]; }
+        { if(!_buf["id"].IsString) { throw new SerializationException(); }  Id = _buf["id"]; }
         { if(!_buf["icon"].IsString) { throw new SerializationException(); }  Icon = _buf["icon"]; }
         { if(!_buf["desc"].IsString) { throw new SerializationException(); }  Desc = _buf["desc"]; }
         { if(!_buf["prefab"].IsString) { throw new SerializationException(); }  Prefab = _buf["prefab"]; }
@@ -34,7 +34,7 @@ public sealed partial class Item : Luban.BeanBase
     /// <summary>
     /// 主键，道具Id
     /// </summary>
-    public readonly int Id;
+    public readonly string Id;
     /// <summary>
     /// 道具图片icon
     /// </summary>

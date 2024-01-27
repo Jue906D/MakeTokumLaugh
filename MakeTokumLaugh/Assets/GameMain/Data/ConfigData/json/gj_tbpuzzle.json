@@ -3,13 +3,49 @@
     "id": 1,
     "puzzle_name": "____，启——动——！",
     "is_start": true,
+    "next_id": 2,
+    "init_item_list": [
+      "1_1_shoutao",
+      "1_1_falao",
+      "1_1_damedane",
+      "1_1_tongsheng",
+      "1_1_geiwowan"
+    ],
+    "suc_item": "1_1_shoutao"
+  },
+  {
+    "id": 2,
+    "puzzle_name": "____，启——动——！",
+    "is_start": false,
+    "next_id": 3,
+    "init_item_list": [
+      "1_2_shouji",
+      "122",
+      "123",
+      "124"
+    ],
+    "suc_item": "1_2_shouji"
+  },
+  {
+    "id": 3,
+    "puzzle_name": "____，启——动——！",
+    "is_start": false,
+    "next_id": 4,
+    "init_item_list": [
+      "1_3_zhifubao",
+      "1_3_weixin",
+      "133"
+    ],
+    "suc_item": "1_3_zhifubao"
+  },
+  {
+    "id": 4,
+    "puzzle_name": "____，启——动——！",
+    "is_start": false,
     "next_id": 0,
     "init_item_list": [
-      "item1",
-      "item2",
-      "item3",
-      "item4"
+      "1_4_jiuchan"
     ],
-    "suc_item": "item3"
+    "suc_item": "1_4_jiuchan"
   }
 ]

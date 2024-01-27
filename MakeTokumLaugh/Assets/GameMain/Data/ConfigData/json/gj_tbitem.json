@@ -1,72 +1,72 @@
 [
   {
-    "id": 111,
+    "id": "1_1_shoutao",
     "icon": "icon_shoutao.png",
     "desc": "手套→裤子里伸出一只手",
-    "prefab": "shoutao",
+    "prefab": "11shoutao",
     "result": "P",
     "is_reserved": false,
-    "lock_id": "121"
+    "lock_id": "1_2_shouji"
   },
   {
-    "id": 112,
+    "id": "1_1_falao",
     "icon": "icon_falao.png",
     "desc": "Ocean Cat（语音+大哈鱼），跳出下一个道具",
-    "prefab": "",
+    "prefab": "11falao",
     "result": "",
     "is_reserved": true,
-    "lock_id": "113"
+    "lock_id": "1_1_damedane"
   },
   {
-    "id": 113,
+    "id": "1_1_damedane",
     "icon": "icon_damedane.png",
     "desc": "母体唱damedane的gif，跳出下一个道具",
-    "prefab": "",
+    "prefab": "11damedane",
     "result": "",
     "is_reserved": true,
-    "lock_id": "114"
+    "lock_id": "1_1_tongsheng"
   },
   {
-    "id": 114,
+    "id": "1_1_tongsheng",
     "icon": "icon_tongsheng.png",
     "desc": "苦酒入喉新作痛，跳出下一个道具",
-    "prefab": "",
+    "prefab": "11tongsheng",
     "result": "",
     "is_reserved": true,
-    "lock_id": "115"
+    "lock_id": "1_1_geiwowan"
   },
   {
-    "id": 115,
+    "id": "1_1_geiwowan",
     "icon": "icon_geiwowan.png",
     "desc": "明日方舟，启动——开错游戏了，Gameover",
-    "prefab": "",
+    "prefab": "11geiwowan",
     "result": "G",
     "is_reserved": true,
     "lock_id": ""
   },
   {
-    "id": 121,
+    "id": "1_2_shouji",
     "icon": "icon_shouji.png",
     "desc": "手机→指纹解锁手机",
-    "prefab": "",
+    "prefab": "12shouji",
     "result": "",
     "is_reserved": false,
-    "lock_id": "131"
+    "lock_id": "1_3_zhifubao"
   },
   {
-    "id": 131,
+    "id": "1_3_zhifubao",
     "icon": "icon_zhifubao.png",
     "desc": "支付宝→充钱648",
-    "prefab": "",
+    "prefab": "13zhifubao",
     "result": "P",
     "is_reserved": false,
-    "lock_id": "141"
+    "lock_id": "1_4_jiuchan"
   },
   {
-    "id": 141,
+    "id": "1_4_jiuchan",
     "icon": "icon_jiuchan.png",
     "desc": "纠缠之缘→原神启动",
-    "prefab": "",
+    "prefab": "14jiuchan",
     "result": "V",
     "is_reserved": false,
     "lock_id": ""

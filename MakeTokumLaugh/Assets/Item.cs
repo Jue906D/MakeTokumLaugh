@@ -11,6 +11,8 @@ public class Item : MonoBehaviour
     //记录下自己的父物体.
     public GameObject ItemPivot;
     [SerializeField]
+    public bool IsReserved = false;
+    [SerializeField]
     //
     public string Name;
 
@@ -41,10 +43,11 @@ public class Item : MonoBehaviour
 
     }
 
-    public void Init(GameObject pivot,string name)
+    public void Init(GameObject pivot,string id,string name)
     {
         ItemPivot = pivot;
         Name = name;
+        IsReserved = LubanLoader.Tables.TbItem[id].IsReserved;
     }
 
     private void OnMouseDown()
@@ -87,7 +90,9 @@ public class Item : MonoBehaviour
     {
         if (isDragging == true)
         {
-            EndDrag(false);
+            isDragging = false;
+            transform.position = ItemPivot.transform.position;
+            //Board.instance.CurDragPiece = null;
         }
         //Debug.Log("end drag");
 
@@ -99,12 +104,14 @@ public class Item : MonoBehaviour
         isDragging = false;
         if (isDeleted)
         {
+            StartCoroutine(GameMain.Main.ShowFeedback(this.Name));
             ItemPivot.GetComponent<Pivot>().IsUsing = false;
             ItemPivot.GetComponent<Pivot>().CurItem = null;
             Destroy(this.gameObject);
         }
         else
         {
+            StartCoroutine(GameMain.Main.ShowFeedback(this.Name));
             transform.position = ItemPivot.transform.position;
         }
         //Board.instance.CurDragPiece = null;
