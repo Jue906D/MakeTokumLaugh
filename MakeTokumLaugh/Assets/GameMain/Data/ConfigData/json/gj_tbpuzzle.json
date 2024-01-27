@@ -6,10 +6,7 @@
     "next_id": 2,
     "init_item_list": [
       "1_1_shoutao",
-      "1_1_falao",
-      "1_1_damedane",
-      "1_1_tongsheng",
-      "1_1_geiwowan"
+      "1_1_falao"
     ],
     "suc_item": "1_1_shoutao"
   },
@@ -20,9 +17,9 @@
     "next_id": 3,
     "init_item_list": [
       "1_2_shouji",
-      "122",
-      "123",
-      "124"
+      "1_2_bangqiugun",
+      "1_2_leishen",
+      "1_2_link"
     ],
     "suc_item": "1_2_shouji"
   },
@@ -34,7 +31,8 @@
     "init_item_list": [
       "1_3_zhifubao",
       "1_3_weixin",
-      "133"
+      "133",
+      "1_3_bilibili"
     ],
     "suc_item": "1_3_zhifubao"
   },

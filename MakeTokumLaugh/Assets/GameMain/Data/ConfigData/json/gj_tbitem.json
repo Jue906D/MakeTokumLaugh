@@ -54,6 +54,33 @@
     "lock_id": "1_3_zhifubao"
   },
   {
+    "id": "1_2_bangqiugun",
+    "icon": "icon_bangqiugun.png",
+    "desc": "棒球棍→规则就是用来打破的，打尿崩，gameover",
+    "prefab": "12bangqiugun",
+    "result": "G",
+    "is_reserved": false,
+    "lock_id": ""
+  },
+  {
+    "id": "1_2_leishen",
+    "icon": "icon_leishen.png",
+    "desc": "雷神专武→无想の一刀，拉链劈开了，人也劈开了gameover",
+    "prefab": "12leishen",
+    "result": "G",
+    "is_reserved": false,
+    "lock_id": ""
+  },
+  {
+    "id": "1_2_link",
+    "icon": "icon_link.png",
+    "desc": "林克的帽子→从裤裆拔出了大师之剑，拿着大师之剑尿崩了gameover",
+    "prefab": "12link",
+    "result": "G",
+    "is_reserved": false,
+    "lock_id": ""
+  },
+  {
     "id": "1_3_zhifubao",
     "icon": "icon_zhifubao.png",
     "desc": "支付宝→充钱648",
@@ -61,6 +88,24 @@
     "result": "P",
     "is_reserved": false,
     "lock_id": "1_4_jiuchan"
+  },
+  {
+    "id": "1_3_weixin",
+    "icon": "icon_weixin",
+    "desc": "元梦之心，启动！",
+    "prefab": "13weixin",
+    "result": "G",
+    "is_reserved": false,
+    "lock_id": ""
+  },
+  {
+    "id": "1_3_bilibili",
+    "icon": "icon_bilibili",
+    "desc": "哔哩哔哩→成为了百大但是尿崩了gameover",
+    "prefab": "",
+    "result": "",
+    "is_reserved": false,
+    "lock_id": ""
   },
   {
     "id": "1_4_jiuchan",

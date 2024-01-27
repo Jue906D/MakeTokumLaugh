@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: -318084069
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 92a4dc3ea7781cd4999ceb82dcf6a054, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8a0b40a1918d7a64c9e668aea6e1c266, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -132,10 +132,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemPivot: {fileID: 0}
+  IsReserved: 0
   Name: 
+  Id: 
   MousePosition: {x: 0, y: 0, z: 0}
   distance: {x: 0, y: 0, z: 0}
   isDragging: 0
+  isDetect: 0
 --- !u!70 &3178423439549879247
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

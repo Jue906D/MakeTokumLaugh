@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 3178423438871068382}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3178423439549879246}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: -318084069
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 23e61af60407cd44e81160825325b09f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b7c5cb55cac1c61498700e2256b078bc, type: 3}
   m_Color: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -132,10 +132,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemPivot: {fileID: 0}
+  IsReserved: 0
   Name: 
+  Id: 
   MousePosition: {x: 0, y: 0, z: 0}
   distance: {x: 0, y: 0, z: 0}
   isDragging: 0
+  isDetect: 0
 --- !u!70 &3178423439549879247
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
