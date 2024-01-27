@@ -16,22 +16,22 @@ public class Detector : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
         var initem = collision.gameObject.GetComponent<Item>();
-        string name = initem.Name;
-        var sucname = LubanLoader.Tables.TbPuzzle[GameMain.Main.CurLevel].SucItem;
-        if (initem.Name == LubanLoader.Tables.TbItem[sucname].Prefab)
+        initem.InDetect = true;
+        if (initem.isDragging == false)
         {
-            initem.EndDrag(true);
-            Debug.Log(string.Format("Next Level£¡Id is : {0}", name));
-        }
-        else
-        {
-            initem.EndDrag(false);
-            Debug.Log(string.Format("Wrong Answer£¡Id is : {0}", name));
+
         }
 
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        var initem = collision.gameObject.GetComponent<Item>();
+        initem.InDetect = false;
     }
 
 

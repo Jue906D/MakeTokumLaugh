@@ -25,10 +25,13 @@ public class Item : MonoBehaviour
 
     [SerializeField]
     public bool isDragging = false;
+    [SerializeField]
+    public bool InDetect = false;
 
     void OnEnable()
     {
         isDragging = false;
+        InDetect = false;
     }
 
     // Start is called before the first frame update
@@ -90,8 +93,27 @@ public class Item : MonoBehaviour
     {
         if (isDragging == true)
         {
-            isDragging = false;
-            transform.position = ItemPivot.transform.position;
+            if (!InDetect)
+            {
+                isDragging = false;
+                transform.position = ItemPivot.transform.position;
+            }
+            else
+            {
+                //var initem = collision.gameObject.GetComponent<Item>();
+                string name = Name;
+                var sucname = LubanLoader.Tables.TbPuzzle[GameMain.Main.CurLevel].SucItem;
+                if (Name == LubanLoader.Tables.TbItem[sucname].Prefab)
+                {
+                    EndDrag(true);
+                    Debug.Log(string.Format("Next Level£¡Id is : {0}", name));
+                }
+                else
+                {
+                    EndDrag(false);
+                    Debug.Log(string.Format("Wrong Answer£¡Id is : {0}", name));
+                }
+            }
             //Board.instance.CurDragPiece = null;
         }
         //Debug.Log("end drag");
@@ -108,6 +130,7 @@ public class Item : MonoBehaviour
             ItemPivot.GetComponent<Pivot>().IsUsing = false;
             ItemPivot.GetComponent<Pivot>().CurItem = null;
             Destroy(this.gameObject);
+            
         }
         else
         {

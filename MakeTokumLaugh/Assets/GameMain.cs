@@ -143,7 +143,7 @@ public class GameMain : MonoBehaviour
         }
         else
         {
-
+            ShowInternal();
             yield return null;
             CurLevel++;
         }
