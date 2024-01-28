@@ -104,13 +104,14 @@ public class Item : MonoBehaviour
             }
             else
             {
+                isDragging = false;
                 string name = Name;
                 var sucname = LubanLoader.Tables.TbPuzzle[GameMain.Main.CurLevel].SucItem;
                 Debug.Log(string.Format("CurSucItem is {0}", LubanLoader.Tables.TbItem[sucname].Prefab));
                 if (Name == LubanLoader.Tables.TbItem[sucname].Prefab)
                 {
                     EndDrag(true);
-                    GameMain.Main.NextLevel();
+                    GameMain.Main.StartNextLevel();
                     var lockid = LubanLoader.Tables.TbItem[Id].LockId;
                     if (!string.IsNullOrEmpty(lockid) && !string.IsNullOrWhiteSpace(lockid))
                     {

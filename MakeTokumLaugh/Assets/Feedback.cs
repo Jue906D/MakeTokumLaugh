@@ -16,8 +16,16 @@ public class Feedback : MonoBehaviour
         
     }
 
-    public void Close()
+    public void Close(bool isWin)
     {
-        Destroy(this.gameObject);
+        if (isWin)
+        {
+            GameMain.Main.Reset = true;
+            this.gameObject.SetActive(false);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

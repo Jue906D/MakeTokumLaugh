@@ -122,9 +122,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1245703451041181844}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
+      - m_Target: {fileID: 6832341503849305114}
+        m_TargetAssemblyTypeName: Feedback, Assembly-CSharp
+        m_MethodName: Close
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -212,7 +212,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1143216729
   m_SortingLayer: 3
-  m_SortingOrder: 20
+  m_SortingOrder: 10
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &7693527453418849791
 MonoBehaviour:
@@ -430,7 +430,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1143216729
   m_SortingLayer: 3
-  m_SortingOrder: 20
+  m_SortingOrder: 10
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &685182170624381874
 MonoBehaviour:

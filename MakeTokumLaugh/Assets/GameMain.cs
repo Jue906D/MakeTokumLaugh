@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static Unity.Burst.Intrinsics.X86.Avx;
 
 public class GameMain : MonoBehaviour
 {
@@ -23,7 +24,9 @@ public class GameMain : MonoBehaviour
     [SerializeField] public TextMeshProUGUI desc;
     [SerializeField] public int CurPuzzle;//
     [SerializeField] public int CurLevel;//关卡
+    [SerializeField] public bool Reset = false;
     public static GameMain Main;
+    public Coroutine co ;
 
     void Awake()
     {
@@ -31,6 +34,7 @@ public class GameMain : MonoBehaviour
         //PivotList = new List<Pivot>(6);
         Main = this;
         ItemDict = new Dictionary<string, GameObject>();
+        Reset = false;
     }
 
     void OnEnable()
@@ -71,6 +75,7 @@ public class GameMain : MonoBehaviour
         }
         ItemDict.Clear();
         CurLevel = 0;
+        Levels[1].SetActive(false);
         Levels[2].SetActive(false);
         Levels[3].SetActive(false);
         Levels[4].SetActive(false);
@@ -139,17 +144,19 @@ public class GameMain : MonoBehaviour
         return null;
     }
 
-    public void NextLevel()
+    public IEnumerator NextLevel()
     {
         if (CurLevel == 4)
         {
+            Debug.Log("In4");
             //过了第四关就换谜题
             //过关黑幕，重置物品
             ShowInternal();
+            Levels[CurLevel].SetActive(true);
             //重置过关不保留物品
             foreach (var pivot in PivotList)
             {
-                if (pivot.IsUsing )
+                if (pivot.IsUsing)
                 {
                     Debug.Log(string.Format("Destroy item {0}", pivot.CurItem.Name));
                     Destroy(pivot.CurItem.gameObject);
@@ -158,7 +165,14 @@ public class GameMain : MonoBehaviour
 
             }
             ItemDict.Clear();
+            //显示界面并等待
+            Debug.Log("In4"+Reset);
+            yield return new WaitUntil(() => Reset);
+            Reset = false;
+            Debug.Log("End Wait");
             CurLevel = 1;
+            Levels[0].SetActive(true);
+            Levels[1].SetActive(false);
             Levels[2].SetActive(false);
             Levels[3].SetActive(false);
             Levels[4].SetActive(false);
@@ -200,7 +214,7 @@ public class GameMain : MonoBehaviour
             }
             //yield return null;
             CurLevel++;
-            Levels[CurLevel%4 == 0? 4: CurLevel % 4].SetActive(true);
+            Levels[CurLevel%4 == 0? 3: CurLevel % 4 -1].SetActive(true);
             //加载标题描述
             title.text = LubanLoader.Tables.TbPuzzle[CurLevel].PuzzleName;
             desc.text = LubanLoader.Tables.TbPuzzle[CurLevel].PuzzleName;
@@ -261,5 +275,10 @@ public class GameMain : MonoBehaviour
     {
         GO.SetActive(true);
 
+    }
+
+    public void StartNextLevel()
+    {
+        co = StartCoroutine(GameMain.Main.NextLevel());
     }
 }
